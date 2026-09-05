@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #070711;
+  --bg-secondary: #0b0b18;
+  --surface: #101021;
+  --surface-hover: #15152a;
+
+  --accent-primary: #8b5cf6;
+  --accent-secondary: #ec4899;
+
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --border: rgba(139, 92, 246, 0.2);
+  --purple-glow: rgba(139, 92, 246, 0.35);
+  --pink-glow: rgba(236, 72, 153, 0.25);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+
+  font-family: "IBM Plex Sans", sans-serif;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar globally but allow scrolling */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+}
+
+code,
+pre,
+.font-mono,
+.technical-text {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Selection */
+
+::selection {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+
+/* Marquee */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow-reverse {
+  animation: marquee 40s linear infinite reverse;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 30s linear infinite reverse;
+}
+
+/* Enter Animation */
+
+@keyframes enter-bottom-right {
+  0% {
+    clip-path: inset(100% 0 0 100%);
+    opacity: 0;
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+.animate-enter-br {
+  animation: enter-bottom-right 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Water Fill */
+
+@keyframes waterFill {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.animate-water-fill {
+  background: linear-gradient(
+    to top,
+    var(--accent-primary) 50%,
+    transparent 50%
+  );
+
+  background-size: 100% 200%;
+  background-position: 0% 0%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+
+  animation: waterFill 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Purple Glow */
+
+.purple-glow {
+  box-shadow:
+    0 0 20px var(--purple-glow),
+    0 0 60px rgba(139, 92, 246, 0.12);
+}
+
+/* Pink Glow */
+
+.pink-glow {
+  box-shadow:
+    0 0 20px var(--pink-glow),
+    0 0 60px rgba(236, 72, 153, 0.1);
+}
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide Cursor */
+
+html,
+body,
+#root,
+* {
+  cursor: none !important;
+}
